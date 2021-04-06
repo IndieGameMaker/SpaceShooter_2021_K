@@ -7,6 +7,7 @@ public class PlayerCtrl : MonoBehaviour
     //선언부
     private float h;
     private float v;
+    private float r;
 
     // 시작시 1번 호출
     void Start()
@@ -14,26 +15,20 @@ public class PlayerCtrl : MonoBehaviour
 
     }
 
-    // 매 프레임마다 호출 함수
+    // 매 프레임마다 호출 함수, 호출주기가 불규칙, 60fps, 30fps
     // 화면을 렌더링하는 주기
     void Update()
     {
         h = Input.GetAxis("Horizontal");  // -1.0f ~ 0.0f ~ +1.0f
         v = Input.GetAxis("Vertical");    // -1.0f ~ 0.0f ~ +1.0f
-
-        //transform.position += new Vector3(0, 0, 0.1f);
-        //transform.position += Vector3.forward * 0.1f; // (0, 0, 1) * 0.1f = (0, 0, 0.1f)
-
-        // transform.Translate(Vector3.forward * 0.1f * v, Space.Self);
-        // transform.Translate(Vector3.right * 0.1f * h);
+        r = Input.GetAxis("Mouse X");
 
         //(전후방향 벡터) + (좌우방향의 벡터)
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
+        transform.Translate(moveDir.normalized * Time.deltaTime * 1.0f);
+        //회전처리
+        transform.Rotate(Vector3.up * Time.deltaTime * 100.0f * r);
 
-        transform.Translate(moveDir.normalized * 0.1f);
-
-        Debug.Log($"moveDir={moveDir.magnitude}");
-        Debug.Log($"moveDir.normal={moveDir.normalized.magnitude}");
 
         /* 정규화 벡터(Normalized Vector), 단위 벡터(Unit Vector)
 
