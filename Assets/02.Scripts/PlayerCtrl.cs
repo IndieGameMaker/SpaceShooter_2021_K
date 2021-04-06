@@ -45,15 +45,16 @@ public class PlayerCtrl : MonoBehaviour
 
         //애니메이션 처리
         PlayerAnimation();
+        Debug.Log("v="+v);
     }
 
     void PlayerAnimation()
     {
-        if (v >= 0.1f) //전진
+        if (v >= 0.01f) //전진
         {
             anim.CrossFade("RunF", 0.25f);
         }
-        else if (v <= -0.1f) //후진
+        else if (v <= -0.01f) //후진
         {
             anim.CrossFade("RunB", 0.25f);
         }
