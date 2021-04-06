@@ -8,6 +8,8 @@ public class PlayerCtrl : MonoBehaviour
     private float h;
     private float v;
     private float r;
+    public float moveSpeed = 8.0f;
+    public float turnSpeed = 100.0f;
 
     // 시작시 1번 호출
     void Start()
@@ -25,9 +27,9 @@ public class PlayerCtrl : MonoBehaviour
 
         //(전후방향 벡터) + (좌우방향의 벡터)
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
-        transform.Translate(moveDir.normalized * Time.deltaTime * 1.0f);
+        transform.Translate(moveDir.normalized * Time.deltaTime * moveSpeed);
         //회전처리
-        transform.Rotate(Vector3.up * Time.deltaTime * 100.0f * r);
+        transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
 
 
         /* 정규화 벡터(Normalized Vector), 단위 벡터(Unit Vector)
