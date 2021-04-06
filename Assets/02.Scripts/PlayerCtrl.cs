@@ -15,14 +15,18 @@ public class PlayerCtrl : MonoBehaviour
     [Range(30.0f, 150.0f)]
     public float turnSpeed = 100.0f;
 
-    [SerializeField]
     private Transform tr;
+    [System.NonSerialized]
+    public Animation anim;
 
     // 시작시 1번 호출
     void Start()
     {
         //Component Cache 처리
         tr = GetComponent<Transform>();
+        anim = GetComponent<Animation>();
+        //Idle 애니메이션 실행
+        anim.Play("Idle");
     }
 
     // 매 프레임마다 호출 함수, 호출주기가 불규칙, 60fps, 30fps
