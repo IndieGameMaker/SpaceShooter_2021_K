@@ -22,7 +22,10 @@ public class PlayerCtrl : MonoBehaviour
         v = Input.GetAxis("Vertical");    // -1.0f ~ 0.0f ~ +1.0f
 
         //transform.position += new Vector3(0, 0, 0.1f);
-        transform.position += Vector3.forward * 0.1f; // (0, 0, 1) * 0.1f = (0, 0, 0.1f)
+        //transform.position += Vector3.forward * 0.1f; // (0, 0, 1) * 0.1f = (0, 0, 0.1f)
+
+        transform.Translate(Vector3.forward * 0.1f * v, Space.Self);
+
 
         /* 정규화 벡터(Normalized Vector), 단위 벡터(Unit Vector)
             
