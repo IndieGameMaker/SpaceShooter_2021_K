@@ -21,6 +21,7 @@ public class PlayerCtrl : MonoBehaviour
     // 시작시 1번 호출
     void Start()
     {
+        //Component Cache 처리
         tr = GetComponent<Transform>();
     }
 
@@ -34,9 +35,9 @@ public class PlayerCtrl : MonoBehaviour
 
         //(전후방향 벡터) + (좌우방향의 벡터)
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
-        transform.Translate(moveDir.normalized * Time.deltaTime * moveSpeed);
+        tr.Translate(moveDir.normalized * Time.deltaTime * moveSpeed);
         //회전처리
-        transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
+        tr.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
 
         /* 정규화 벡터(Normalized Vector), 단위 벡터(Unit Vector)
 
