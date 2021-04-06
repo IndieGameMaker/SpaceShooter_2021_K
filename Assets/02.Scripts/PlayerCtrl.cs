@@ -9,16 +9,19 @@ public class PlayerCtrl : MonoBehaviour
     private float v;
     private float r;
 
-    [Header("이동속도 및 회전속도")]
+    [Header("Move/Rotate Speed")]
     [Range(3.0f, 10.0f)]
     public float moveSpeed = 5.0f;
     [Range(30.0f, 150.0f)]
     public float turnSpeed = 100.0f;
 
+    [SerializeField]
+    private Transform tr;
+
     // 시작시 1번 호출
     void Start()
     {
-
+        tr = GetComponent<Transform>();
     }
 
     // 매 프레임마다 호출 함수, 호출주기가 불규칙, 60fps, 30fps
@@ -34,7 +37,6 @@ public class PlayerCtrl : MonoBehaviour
         transform.Translate(moveDir.normalized * Time.deltaTime * moveSpeed);
         //회전처리
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
-
 
         /* 정규화 벡터(Normalized Vector), 단위 벡터(Unit Vector)
 
