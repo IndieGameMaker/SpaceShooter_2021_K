@@ -8,7 +8,11 @@ public class PlayerCtrl : MonoBehaviour
     private float h;
     private float v;
     private float r;
-    public float moveSpeed = 8.0f;
+
+    [Header("이동속도 및 회전속도")]
+    [Range(3.0f, 10.0f)]
+    public float moveSpeed = 5.0f;
+    [Range(30.0f, 150.0f)]
     public float turnSpeed = 100.0f;
 
     // 시작시 1번 호출
