@@ -4,39 +4,23 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    // 변수의 선언부(전역변수)
-    int i = 0;     
-    int [] xp = new int[5] {10, 20, 30, 40, 50};
+    //선언부
+    private float h;
+    private float v;
 
     // 시작시 1번 호출
     void Start()
-    {   
-        Debug.Log("Hello World!");
+    {
 
-        //배열
-        for(int i=0; i<5; i++)
-        {
-            Debug.Log($"i={xp[i]}");
-        }
-
-        //List
-
-        //Hashtable
-
-        //Dictionary
-        InvokeRepeating("ShowTime", 0.0f, 1.0f);
     }
 
     // 매 프레임마다 호출 함수
     // 화면을 렌더링하는 주기
     void Update()
     {
-        //Debug.Log($"i={i++}");
-    }
+        h = Input.GetAxis("Horizontal");  // -1.0f ~ 0.0f ~ +1.0f
+        v = Input.GetAxis("Vertical");    // -1.0f ~ 0.0f ~ +1.0f
 
-    void ShowTime()
-    {
-        Debug.Log($"Time={Time.time}");
+        Debug.Log($"h={h} / v={v}");
     }
-
 }
