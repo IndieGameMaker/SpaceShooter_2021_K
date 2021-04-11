@@ -11,7 +11,7 @@ public class PlayerCtrl : MonoBehaviour
 
     [Header("Move/Rotate Speed")]
     [Range(3.0f, 10.0f)]
-    public float moveSpeed = 5.0f;
+    public float moveSpeed = 20.0f;
     [Range(30.0f, 150.0f)]
     public float turnSpeed = 100.0f;
 
