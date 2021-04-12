@@ -9,6 +9,7 @@ using UnityEngine;
 
 */
 
+[RequireComponent(typeof(AudioSource))]
 public class FireCtrl : MonoBehaviour
 {
     public Transform firePos;
