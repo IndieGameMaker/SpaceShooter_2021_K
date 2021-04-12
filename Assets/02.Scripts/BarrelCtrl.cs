@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BarrelCtrl : MonoBehaviour
 {
+    public GameObject expEffect;
+        
     /*
         C# Standard Naming Rule
 
