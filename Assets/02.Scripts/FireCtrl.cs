@@ -14,6 +14,8 @@ public class FireCtrl : MonoBehaviour
     public Transform firePos;
     public GameObject bulletPrefab;
 
+    //[System.NonSerialized]
+    [HideInInspector]
     public new AudioSource audio;
     public AudioClip fireSfx;
 
