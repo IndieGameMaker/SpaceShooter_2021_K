@@ -7,15 +7,27 @@ public class RemoveBullet : MonoBehaviour
     //충돌 콜백함수 (Collision Call Back Function)
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag == "BULLET")
+        if (coll.collider.CompareTag("BULLET"))
         {
             Destroy(coll.gameObject);
         }
+        
+        // Garbage Collection 발생
+        // if (coll.gameObject.tag == "BULLET")
+        // {
+        //     Destroy(coll.gameObject);
+        // }
     }
 
     /*
     void OnCollisionStay(Collision coll)
     void OnCollisionExit(Collision coll)
+    */
+
+    /* Is Trigger 옵션이 체크됐을 경우 호출되는 콜백함수
+    void OnTriggerEnter(Collider coll)
+    void OnTriggerStay(Collider coll)
+    void OnTriggerExit(Collider coll)   
     */
 
 }
