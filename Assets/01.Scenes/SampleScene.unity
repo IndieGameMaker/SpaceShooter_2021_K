@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2905a32bebec7436882f1e176a5e712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1 &392439434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
@@ -857,7 +858,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3407822, y: 1}
+    m_SensorSize: {x: 2.877095, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

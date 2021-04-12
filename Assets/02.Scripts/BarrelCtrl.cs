@@ -42,6 +42,4 @@ public class BarrelCtrl : MonoBehaviour
 
         Instantiate(expEffect, this.transform.position, Quaternion.identity);
     }
-
-
 }
