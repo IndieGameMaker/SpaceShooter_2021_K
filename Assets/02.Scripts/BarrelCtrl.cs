@@ -18,5 +18,26 @@ public class BarrelCtrl : MonoBehaviour
 
     private int hitCount = 0;
 
+    //충돌 콜백함수 (충돌시 1번 호출)
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("BULLET"))
+        {
+            ++hitCount;  //hitCount = hitCount + 1;
+            if (hitCount == 3)
+            {
+                //폭발함수 호출
+                ExpBarrel();
+            }
+        }
+    }
+
+    void ExpBarrel()
+    {
+        Rigidbody rb = this.gameObject.AddComponent<Rigidbody>();
+        rb.AddForce(Vector3.up * 2000.0f);
+        Destroy(this.gameObject, 2.0f);
+    }
+
 
 }
