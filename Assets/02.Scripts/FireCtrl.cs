@@ -14,6 +14,7 @@ public class FireCtrl : MonoBehaviour
 {
     public Transform firePos;
     public GameObject bulletPrefab;
+    public MeshRenderer muzzleFlash;  //public Renderer muzzleFlash;
 
     //[System.NonSerialized]
     [HideInInspector]
@@ -23,7 +24,8 @@ public class FireCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();    
+        audio = GetComponent<AudioSource>();   
+        muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>(); 
     }
 
     // Update is called once per frame
