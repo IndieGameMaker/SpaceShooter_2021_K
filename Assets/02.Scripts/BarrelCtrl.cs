@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+//using Random = System.Random; //C# API의 Random 클래스를 사용한다.
 
 public class BarrelCtrl : MonoBehaviour
 {
     public GameObject expEffect;
+    public Texture[] textures;
 
     /*
         C# Standard Naming Rule
@@ -19,6 +22,15 @@ public class BarrelCtrl : MonoBehaviour
     */
 
     private int hitCount = 0;
+    private new MeshRenderer renderer;
+
+    void Start()
+    {
+        renderer = GetComponentInChildren<MeshRenderer>();
+        //난수 발생
+        int idx = Random.Range(0, textures.Length); //(0,3) => 0, 1, 2
+        renderer.material.mainTexture = textures[idx];
+    }
 
     //충돌 콜백함수 (충돌시 1번 호출)
     void OnCollisionEnter(Collision coll)
