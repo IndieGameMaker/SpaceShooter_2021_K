@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084f9d975d5114b8e81c5ba8888e1041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sparkEffect: {fileID: 1000011945391522, guid: 78b71003e8b357d4bbf89c8b5e5e4f0e, type: 3}
 --- !u!136 &128208784
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -858,7 +859,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.4312797, y: 1}
+    m_SensorSize: {x: 1.0721393, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
