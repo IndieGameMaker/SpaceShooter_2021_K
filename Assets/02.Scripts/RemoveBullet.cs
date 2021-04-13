@@ -12,7 +12,7 @@ public class RemoveBullet : MonoBehaviour
         if (coll.collider.CompareTag("BULLET"))
         {
             //충돌 지점에 대한 정보를 추출
-            //ContactPoint[] points = coll.contacts;
+            //ContactPoint[] points = coll.contacts; //Garbage Collection
             ContactPoint cont = coll.GetContact(0);
 
             //법선 벡터
@@ -24,7 +24,8 @@ public class RemoveBullet : MonoBehaviour
 
             //스파크 이펙트를 발생(생성)
             //Instantiate(생성객체, 좌표, 회전각도);
-            Instantiate(sparkEffect, cont.point, rot);
+            GameObject spark = Instantiate(sparkEffect, cont.point, rot);
+            Destroy (spark, 0.8f);
 
             Destroy(coll.gameObject);
         }
