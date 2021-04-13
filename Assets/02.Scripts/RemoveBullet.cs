@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class RemoveBullet : MonoBehaviour
 {
+    public GameObject sparkEffect;
+
     //충돌 콜백함수 (Collision Call Back Function)
     void OnCollisionEnter(Collision coll)
     {
         if (coll.collider.CompareTag("BULLET"))
         {
+
+            
             Destroy(coll.gameObject);
         }
         
-        // Garbage Collection 발생
-        // if (coll.gameObject.tag == "BULLET")
-        // {
-        //     Destroy(coll.gameObject);
-        // }
+
     }
 
     /*
