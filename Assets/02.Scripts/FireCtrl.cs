@@ -70,6 +70,12 @@ public class FireCtrl : MonoBehaviour
         muzzleFlash.material.mainTextureOffset = offset;
         //muzzleFlash.material.SetTextureOffset("_MainTex", offset);
 
+        //Muzzle Flash 불규칙한 회전처리
+        //Quaternion.Euler 오일러각도를 쿼터니언 타입으로 변환하는 함수(메소드)
+        //Quaternion rot = Quaternion.Euler(0, 0, Random.Range(0, 360));
+        Quaternion rot = Quaternion.Euler(Vector3.forward * Random.Range(0, 360));
+        muzzleFlash.transform.localRotation = rot;
+
     }
 
 }
