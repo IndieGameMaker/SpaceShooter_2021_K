@@ -47,5 +47,29 @@ public class FireCtrl : MonoBehaviour
         // audio.clip = fireSfx;
         // audio.Play();
         audio.PlayOneShot(fireSfx , 0.8f);
+
+        ShowMuzzleFlash();
     }
+
+    void ShowMuzzleFlash()
+    {
+        // 난수 발생
+        // Random.Range(min, max)
+        // Random.Range(0, 3)  =>  0, 1, 2
+        // Random.Range(0.0f, 3.0f)  => 0.0f ~ 3.0f
+
+        // 텍스처의 Offset 값을 변경
+        // (0, 0), (0.5, 0), (0.5, 0.5), (0, 0.5)
+        //new Vector2(Random.Range(0,2) * 0.5f, Random.Range(0,2) * 0.5f);
+        //Random.Range(0,2) * 0.5f //(0,1) * 0.5 => 0, 0.5
+
+        Vector2 offset = new Vector2(Random.Range(0,2), Random.Range(0,2)) * 0.5f;
+        //(0, 1) * 0.5f = (0, 0.5)
+        //(1, 1) * 0.5f = (0.5, 0.5)
+
+        muzzleFlash.material.mainTextureOffset = offset;
+        //muzzleFlash.material.SetTextureOffset("_MainTex", offset);
+
+    }
+
 }
