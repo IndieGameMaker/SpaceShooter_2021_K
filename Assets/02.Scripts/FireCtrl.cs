@@ -76,6 +76,11 @@ public class FireCtrl : MonoBehaviour
         Quaternion rot = Quaternion.Euler(Vector3.forward * Random.Range(0, 360));
         muzzleFlash.transform.localRotation = rot;
 
+        // Muzzle Flash의 크기를 불규칙하게 변경처리
+        // localScale 
+        // 균등 스케일로 설정
+        muzzleFlash.transform.localScale = Vector3.one * Random.Range(1.0f, 3.0f);
+
     }
 
 }
