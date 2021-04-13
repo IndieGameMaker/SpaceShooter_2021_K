@@ -22,10 +22,21 @@ public class FireCtrl : MonoBehaviour
     public AudioClip fireSfx;
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
         audio = GetComponent<AudioSource>();   
         muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>(); 
+        muzzleFlash.enabled = false;
+
+        Debug.Log("1st");
+
+        yield return null;
+
+        Debug.Log("2nd");
+
+        yield return new WaitForSeconds(10.0f);
+
+        Debug.Log("3rd");
     }
 
     // Update is called once per frame
@@ -48,24 +59,12 @@ public class FireCtrl : MonoBehaviour
         // audio.Play();
         audio.PlayOneShot(fireSfx , 0.8f);
 
-        ShowMuzzleFlash();
+        StartCoroutine(ShowMuzzleFlash());
     }
 
-    void ShowMuzzleFlash()
+    IEnumerator ShowMuzzleFlash()
     {
-        // 난수 발생
-        // Random.Range(min, max)
-        // Random.Range(0, 3)  =>  0, 1, 2
-        // Random.Range(0.0f, 3.0f)  => 0.0f ~ 3.0f
-
-        // 텍스처의 Offset 값을 변경
-        // (0, 0), (0.5, 0), (0.5, 0.5), (0, 0.5)
-        //new Vector2(Random.Range(0,2) * 0.5f, Random.Range(0,2) * 0.5f);
-        //Random.Range(0,2) * 0.5f //(0,1) * 0.5 => 0, 0.5
-
         Vector2 offset = new Vector2(Random.Range(0,2), Random.Range(0,2)) * 0.5f;
-        //(0, 1) * 0.5f = (0, 0.5)
-        //(1, 1) * 0.5f = (0.5, 0.5)
 
         muzzleFlash.material.mainTextureOffset = offset;
         //muzzleFlash.material.SetTextureOffset("_MainTex", offset);
@@ -80,6 +79,12 @@ public class FireCtrl : MonoBehaviour
         // localScale 
         // 균등 스케일로 설정
         muzzleFlash.transform.localScale = Vector3.one * Random.Range(1.0f, 3.0f);
+
+        muzzleFlash.enabled = true;
+
+        yield return new WaitForSeconds(0.3f);
+
+        muzzleFlash.enabled = false;
 
     }
 
