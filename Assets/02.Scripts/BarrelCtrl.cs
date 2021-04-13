@@ -8,24 +8,16 @@ public class BarrelCtrl : MonoBehaviour
 {
     public GameObject expEffect;
     public Texture[] textures;
-
-    /*
-        C# Standard Naming Rule
-
-        Camel Case (카멜 케이스)   
-        : nickName, userName, playerID
-        : 변수(필드)
-
-        Pascal Case(파스칼 케이스)
-        : GetComponent<T>, SetPlayerID()
-        : 클래스 명, 구조체 명, 메소드(함수), C# 프로퍼티
-    */
+    public AudioClip expSFX;
 
     private int hitCount = 0;
     private new MeshRenderer renderer;
+    private new AudioSource audio;
 
     void Start()
     {
+        //AudioSource 컴포넌트 추출후 변수할당
+        audio = GetComponent<AudioSource>();
         renderer = GetComponentInChildren<MeshRenderer>();
         //난수 발생
         int idx = Random.Range(0, textures.Length); //(0,3) => 0, 1, 2
@@ -48,6 +40,7 @@ public class BarrelCtrl : MonoBehaviour
 
     void ExpBarrel()
     {
+        audio.PlayOneShot(expSFX, 1.0f);
         Rigidbody rb = this.gameObject.AddComponent<Rigidbody>();
         rb.AddForce(Vector3.up * 2000.0f);
         Destroy(this.gameObject, 2.0f);
