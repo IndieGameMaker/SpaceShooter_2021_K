@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterCtrl : MonoBehaviour
 {
+    // A*PathFinding 길찾기 알고리즘
+    // 네비게이션 시스템 (Navigation Mesh)
+
     //몬스터와 주인공의 Transform 컴포넌트를 저장할 변수 선언
     private Transform monsterTr;
     private Transform playerTr;
+    //네비메시 에이전트 컴포넌트
+    private NavMeshAgent agent;
 
     //몬스터의 상태를 나타내는 열거형 변수 정의
     public enum STATE {IDLE, TRACE, ATTACK, DIE}
@@ -30,8 +36,16 @@ public class MonsterCtrl : MonoBehaviour
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
 
+        agent = GetComponent<NavMeshAgent>();
+
         StartCoroutine(CheckState()); //추후에 개별적으로 코루함수를 정지 가능
         StartCoroutine(MonsterAction());
+    }
+
+    void Update()
+    {
+        agent.SetDestination(playerTr.position);//함수(메소드)를 사용
+        //agent.destination = playerTr.position;//속성(프로퍼티)를 사용
     }
 
     //몬스터의 상태값을 결정하는 코루틴
