@@ -42,12 +42,6 @@ public class MonsterCtrl : MonoBehaviour
         StartCoroutine(MonsterAction());
     }
 
-    void Update()
-    {
-        agent.SetDestination(playerTr.position);//함수(메소드)를 사용
-        //agent.destination = playerTr.position;//속성(프로퍼티)를 사용
-    }
-
     //몬스터의 상태값을 결정하는 코루틴
     IEnumerator CheckState()
     {
@@ -83,10 +77,12 @@ public class MonsterCtrl : MonoBehaviour
             switch (state)
             {
                 case STATE.IDLE:
-                    Debug.Log($"State = {state}");
+                    agent.isStopped = true;
                     break;
+                //추적 상태
                 case STATE.TRACE:
-                    Debug.Log($"State = {state}");
+                    agent.SetDestination(playerTr.position);
+                    agent.isStopped = false;
                     break;
                 case STATE.ATTACK:
                     Debug.Log($"State = {state}");
