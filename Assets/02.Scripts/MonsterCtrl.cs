@@ -36,6 +36,8 @@ public class MonsterCtrl : MonoBehaviour
     private readonly int hashAttack = Animator.StringToHash("IsAttack");
     private readonly int hashHit    = Animator.StringToHash("Hit");
 
+    private float hp = 100.0f;
+
     void Start()
     {
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
@@ -117,6 +119,13 @@ public class MonsterCtrl : MonoBehaviour
             anim.SetTrigger(hashHit);
             //Bullet 삭제
             Destroy(coll.gameObject);
+            
+            //몬스터의 HP 차감
+            hp -= 20.0f; //hp = hp - 20;
+            if (hp <= 0.0f)
+            {
+                state = STATE.DIE;
+            }
         }
     }
 }
