@@ -29,7 +29,8 @@ public class MonsterCtrl : MonoBehaviour
     // 몬스터의 사망여부 변수를 선언
     public bool isDie = false;
 
-    //int state = 0; //0: IDLE, 1: Trace, 2, Attack
+    //Animator 컴포넌트를 저장할 변수를 선언
+    private Animator anim;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class MonsterCtrl : MonoBehaviour
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
 
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
 
         StartCoroutine(CheckState()); //추후에 개별적으로 코루함수를 정지 가능
         StartCoroutine(MonsterAction());
