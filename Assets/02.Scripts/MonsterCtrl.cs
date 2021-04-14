@@ -32,6 +32,9 @@ public class MonsterCtrl : MonoBehaviour
     //Animator 컴포넌트를 저장할 변수를 선언
     private Animator anim;
 
+    private readonly int hashTrace = Animator.StringToHash("IsTrace");
+    private readonly int hashAttack = Animator.StringToHash("IsAttack");
+
     void Start()
     {
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
@@ -80,18 +83,22 @@ public class MonsterCtrl : MonoBehaviour
             {
                 case STATE.IDLE:
                     agent.isStopped = true;
-                    anim.SetBool("IsTrace", false);
+                    anim.SetBool(hashTrace, false);
                     break;
+
                 //추적 상태
                 case STATE.TRACE:
                     agent.SetDestination(playerTr.position);
                     agent.isStopped = false;
+                    anim.SetBool(hashAttack, false);
+                    anim.SetBool(hashTrace , true);
+                    break;
 
-                    anim.SetBool("IsTrace" , true);
-                    break;
+                //공격 상태
                 case STATE.ATTACK:
-                    Debug.Log($"State = {state}");
+                    anim.SetBool(hashAttack, true);
                     break;
+
                 case STATE.DIE:
                     //
                     break;    
