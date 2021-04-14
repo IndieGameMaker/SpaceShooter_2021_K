@@ -32,8 +32,9 @@ public class MonsterCtrl : MonoBehaviour
     //Animator 컴포넌트를 저장할 변수를 선언
     private Animator anim;
 
-    private readonly int hashTrace = Animator.StringToHash("IsTrace");
+    private readonly int hashTrace  = Animator.StringToHash("IsTrace");
     private readonly int hashAttack = Animator.StringToHash("IsAttack");
+    private readonly int hashHit    = Animator.StringToHash("Hit");
 
     void Start()
     {
@@ -113,7 +114,7 @@ public class MonsterCtrl : MonoBehaviour
         if (coll.collider.CompareTag("BULLET"))
         {
             //Hit reaction 애니메이션 실행
-
+            anim.SetTrigger(hashHit);
             //Bullet 삭제
             Destroy(coll.gameObject);
         }
