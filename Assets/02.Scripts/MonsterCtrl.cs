@@ -35,6 +35,7 @@ public class MonsterCtrl : MonoBehaviour
     private readonly int hashTrace  = Animator.StringToHash("IsTrace");
     private readonly int hashAttack = Animator.StringToHash("IsAttack");
     private readonly int hashHit    = Animator.StringToHash("Hit");
+    private readonly int hashDie    = Animator.StringToHash("Die");
 
     private float hp = 100.0f;
 
@@ -55,6 +56,11 @@ public class MonsterCtrl : MonoBehaviour
     {
         while (isDie == false)
         {
+            if (state == STATE.DIE)
+            {
+                yield break; //해당 코루틴을 정지시킴.
+            }
+
             //몬스터의 상태는 주인공 <--> 몬스터 거리
             float distance = Vector3.Distance(monsterTr.position, playerTr.position);
 
@@ -103,7 +109,7 @@ public class MonsterCtrl : MonoBehaviour
                     break;
 
                 case STATE.DIE:
-                    //
+                    
                     break;    
             }
 
@@ -119,7 +125,7 @@ public class MonsterCtrl : MonoBehaviour
             anim.SetTrigger(hashHit);
             //Bullet 삭제
             Destroy(coll.gameObject);
-            
+
             //몬스터의 HP 차감
             hp -= 20.0f; //hp = hp - 20;
             if (hp <= 0.0f)
