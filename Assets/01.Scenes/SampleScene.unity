@@ -1179,6 +1179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
+      propertyPath: m_TagString
+      value: PLAYER
+      objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1532,7 +1536,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.4589235, y: 1}
+    m_SensorSize: {x: 2.877095, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1630,6 +1634,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50e232a844054bb88db1a5f8170a27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  traceDist: 10
+  attackDist: 2
+  isDie: 0
 --- !u!4 &1249986569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2776842860437766421, guid: 642f78261b1c741b9af78eb889fa7ec6, type: 3}
@@ -2441,7 +2449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 114cb4bcf81314b65b611fcc4f346ee1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.42
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 114cb4bcf81314b65b611fcc4f346ee1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2449,7 +2457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 114cb4bcf81314b65b611fcc4f346ee1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06
+      value: 14.63
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 114cb4bcf81314b65b611fcc4f346ee1, type: 3}
       propertyPath: m_LocalRotation.w

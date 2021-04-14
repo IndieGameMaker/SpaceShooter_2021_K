@@ -34,6 +34,7 @@ public class MonsterCtrl : MonoBehaviour
         //StartCoroutine("CheckState", 0.5f); 
     }
 
+    //몬스터의 상태값을 결정하는 코루틴
     IEnumerator CheckState()
     {
         while (isDie == false)
@@ -56,6 +57,32 @@ public class MonsterCtrl : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    //몬스터의 상태값에 따라서 행동을 처리하는 코루틴
+    IEnumerator MonsterAction()
+    {
+        while(!isDie) //(isDie == false)
+        {
+            //몬스터의 상태에 따라서 분기처리
+            switch (state)
+            {
+                case STATE.IDLE:
+                    Debug.Log($"State = {state}");
+                    break;
+                case STATE.TRACE:
+                    Debug.Log($"State = {state}");
+                    break;
+                case STATE.ATTACK:
+                    Debug.Log($"State = {state}");
+                    break;
+                case STATE.DIE:
+                    //
+                    break;    
+            }
+
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }
