@@ -109,7 +109,7 @@ public class MonsterCtrl : MonoBehaviour
                     break;
 
                 case STATE.DIE:
-                    
+                    anim.SetTrigger(hashDie);
                     break;    
             }
 
