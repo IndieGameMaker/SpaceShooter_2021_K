@@ -31,7 +31,7 @@ public class MonsterCtrl : MonoBehaviour
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
 
         StartCoroutine(CheckState()); //추후에 개별적으로 코루함수를 정지 가능
-        //StartCoroutine("CheckState", 0.5f); 
+        StartCoroutine(MonsterAction());
     }
 
     //몬스터의 상태값을 결정하는 코루틴
