@@ -107,4 +107,15 @@ public class MonsterCtrl : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("BULLET"))
+        {
+            //Hit reaction 애니메이션 실행
+
+            //Bullet 삭제
+            Destroy(coll.gameObject);
+        }
+    }
 }
