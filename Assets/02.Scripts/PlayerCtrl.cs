@@ -119,7 +119,8 @@ public class PlayerCtrl : MonoBehaviour
         //monsters 배열을 순회하면서 모든 몬스터의 YouWin함수를 호출
         foreach (GameObject monster in monsters)
         {
-            monster.GetComponent<MonsterCtrl>().YouWin();   
+            //monster.GetComponent<MonsterCtrl>().YouWin();
+            monster.SendMessage("YouWin" , SendMessageOptions.DontRequireReceiver);
         }
     }
 }
