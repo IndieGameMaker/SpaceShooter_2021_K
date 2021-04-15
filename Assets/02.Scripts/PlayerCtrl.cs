@@ -78,4 +78,30 @@ public class PlayerCtrl : MonoBehaviour
             anim.CrossFade("Idle", 0.1f);
         }
     }
+
+    /*
+        Collider 컴포넌트의 Is Trigger 속성에 따른 충돌 콜백함수
+        1. 언체크 일 경우 : Collision 타입
+            OnCollisionEnter, Stay, Exit
+        2. 체크된 경우 : Collider 컴포넌트
+            OnTriggerEnter, Stay, Exit
+    */
+
+    // void OnCollisionEnter(Collision coll)
+    // {
+    //     if (coll.collider.tag == "BULLET")
+    //     {
+
+    //     }
+    // }
+    //충돌 콜백 함수
+    void OnTriggerEnter(Collider coll)
+    {
+        // if (coll.tag == "PUNCH")
+
+        if (coll.CompareTag("PUNCH"))
+        {
+            Debug.Log($"Hit = {coll.gameObject.name}");
+        }
+    }
 }
