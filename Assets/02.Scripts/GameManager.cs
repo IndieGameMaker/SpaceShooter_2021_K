@@ -16,8 +16,12 @@ public class GameManager : MonoBehaviour
 
     //몬스터의 생성 주기(sec)
     public float createTime = 3.0f;
-
     public bool isGameOver = false;
+
+    //몬스터 풀(Pool)
+    public List<GameObject> monsterPool = new List<GameObject>();
+    //몬스터 풀 갯수
+    public int maxPool = 20;
 
     void Awake()
     {
@@ -31,7 +35,24 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        CreatePool();
     }
+
+    //몬스터 풀 갯수 만큼 미리 생성해서 오브젝트 풀에 저장
+    void CreatePool()
+    {
+        for(int i=0; i<maxPool; i++)
+        {
+            GameObject monster = Instantiate<GameObject>(monsterPrefab);
+            monster.name = $"Monster_{i:000}";
+            monster.SetActive(false);
+
+            //오브젝트 풀에 추가
+            monsterPool.Add(monster);
+        }
+    }
+
 
     void Start()
     {
