@@ -1872,6 +1872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: []
   monsterPrefab: {fileID: 0}
+  createTime: 3
 --- !u!4 &990429236
 Transform:
   m_ObjectHideFlags: 0
