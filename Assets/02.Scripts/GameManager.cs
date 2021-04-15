@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public List<Transform> points = new List<Transform>();
     public GameObject monsterPrefab;
 
+    //몬스터의 생성 주기(sec)
+    public float createTime = 3.0f;
+
     void Start()
     {
         //List에 저장할 경우
@@ -15,21 +18,28 @@ public class GameManager : MonoBehaviour
 
         //Resources 폴더에 있는 프리핍을 로딩
         monsterPrefab = Resources.Load<GameObject>("monster");
-
-        //배열에 저장할 경우
-        //points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();      
         
-        // Transform tr = GameObject.Find("SpawnPointGroup").transform;
-        
-        // foreach (Transform _tr in tr) //배열 또는 List
-        // {
-        //     points.Add(_tr);
-        // }
+        //(호출할_함수, 지연시간, 반복시간)
+        InvokeRepeating("CreateMonster", 2.0f, createTime);
+        //CancelInvoke("CreateMonster");
     }
 
-    // Update is called once per frame
-    void Update()
+    void CreateMonster()
     {
+        //난수 발생
+        int idx = Random.Range(1, points.Count);
+        //몬스터를 생성
+        GameObject monster = Instantiate<GameObject>(monsterPrefab);
+        monster.name = "Monster";
+        //몬스터의 위치설정
+        monster.transform.position = points[idx].position;
         
+        //벡터의 뺄셈연산 = (원점 - 몬스터의좌표)
+        Vector3 dir = points[0].position - points[idx].position;
+        //벡터를 이용해 쿼터니언 타입의 각도를 산출
+        Quaternion rot = Quaternion.LookRotation(dir);
+        //몬스터의 각도를 설정
+        monster.transform.rotation = rot;
     }
+
 }
