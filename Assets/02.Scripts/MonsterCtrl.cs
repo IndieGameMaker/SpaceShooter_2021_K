@@ -49,6 +49,9 @@ public class MonsterCtrl : MonoBehaviour
         //현재 클래스(스크립트)에 있는 YouWin 함수를 호출한다.
         PlayerCtrl.OnPlayerDie += this.YouWin;
         PlayerCtrl.OnPlayerDie += this.Display;
+
+        StartCoroutine(CheckState()); //추후에 개별적으로 코루함수를 정지 가능
+        StartCoroutine(MonsterAction());        
     }
 
     void OnDisable()
@@ -62,16 +65,13 @@ public class MonsterCtrl : MonoBehaviour
         Debug.Log("Dancing");
     }
 
-    void Start()
+    void Awake()
     {
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
 
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
-        StartCoroutine(CheckState()); //추후에 개별적으로 코루함수를 정지 가능
-        StartCoroutine(MonsterAction());
     }
 
     //몬스터의 상태값을 결정하는 코루틴
@@ -136,11 +136,25 @@ public class MonsterCtrl : MonoBehaviour
                     GetComponent<CapsuleCollider>().enabled = false;
                     agent.isStopped = true;
                     isDie = true;
+
+                    Invoke("ReturnPool", 3.0f);
                     break;    
             }
 
             yield return new WaitForSeconds(0.3f);
         }
+    }
+
+    void ReturnPool()
+    {
+        //몬스터 초기화
+        GetComponent<CapsuleCollider>().enabled = true;
+        agent.isStopped = false;
+        isDie = false;
+        hp = 100.0f; 
+        state = STATE.IDLE; 
+        //비활성
+        this.gameObject.SetActive(false);      
     }
 
     void OnCollisionEnter(Collision coll)
