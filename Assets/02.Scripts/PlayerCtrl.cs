@@ -16,10 +16,13 @@ public class PlayerCtrl : MonoBehaviour
     public float turnSpeedValue = 100.0f;
     private float turnSpeed;
 
-
     private Transform tr;
     [System.NonSerialized]
     public Animation anim;
+
+    // currHp / initHp = 백분율(%)
+    private float initHp = 100.0f;  //초기 생명수치
+    public float currHp = 100.0f;   //현재 생명수치
 
     // 시작시 1번 호출
     IEnumerator Start()
@@ -101,7 +104,8 @@ public class PlayerCtrl : MonoBehaviour
 
         if (coll.CompareTag("PUNCH"))
         {
-            Debug.Log($"Hit = {coll.gameObject.name}");
+            currHp -= 10.0f;
+            Debug.Log($"Hit = {coll.gameObject.name} Hp = {currHp},{currHp/initHp}");
         }
     }
 }
