@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
                     //난수 발생
                     int idx = Random.Range(1, points.Count);
                     monster.transform.position = points[idx].position;
-                    monster.transform.LookAt(points[idx].position);
+                    monster.transform.LookAt(points[0].position);
                     monster.SetActive(true);
                     break;
                 }
