@@ -36,7 +36,7 @@ public class PlayerCtrl : MonoBehaviour
     // 이벤트를 선언
     public static event DieHandler OnPlayerDie;    
 
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
 
     // 델리게이트(Delegate) : 대리자, 함수를 저장할 수 있는 데이터타입
@@ -45,7 +45,7 @@ public class PlayerCtrl : MonoBehaviour
     // 시작시 1번 호출
     IEnumerator Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         turnSpeed = 0.0f;
 
         //Component Cache 처리
@@ -126,7 +126,7 @@ public class PlayerCtrl : MonoBehaviour
             //Debug.Log($"Hit = {coll.gameObject.name} Hp = {currHp},{currHp/initHp}");
             if (currHp <= 0.0f)
             {
-                gameManager.isGameOver = true;
+                GameManager.instance.isGameOver = true;
                 OnPlayerDie();
                 //PlayerDie();
             }

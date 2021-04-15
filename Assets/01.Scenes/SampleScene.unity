@@ -895,6 +895,7 @@ MonoBehaviour:
   moveSpeed: 8
   turnSpeedValue: 123.8
   currHp: 100
+  gameManager: {fileID: 0}
 --- !u!4 &392439436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400046, guid: f3cd25b3bf53c4adaaf087d862e435e6, type: 3}
@@ -1873,6 +1874,7 @@ MonoBehaviour:
   points: []
   monsterPrefab: {fileID: 0}
   createTime: 3
+  isGameOver: 0
 --- !u!4 &990429236
 Transform:
   m_ObjectHideFlags: 0
@@ -2354,7 +2356,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.5418994, y: 1}
+    m_SensorSize: {x: 2.877095, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
