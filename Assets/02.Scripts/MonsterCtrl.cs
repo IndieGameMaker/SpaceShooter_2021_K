@@ -48,7 +48,6 @@ public class MonsterCtrl : MonoBehaviour
         //PlayerCtrl 클래스(스크립트)에 정의한 OnPlayerDie 이벤트가 발생(Raise)하면
         //현재 클래스(스크립트)에 있는 YouWin 함수를 호출한다.
         PlayerCtrl.OnPlayerDie += this.YouWin;
-        PlayerCtrl.OnPlayerDie += this.Display;
 
         StartCoroutine(CheckState()); //추후에 개별적으로 코루함수를 정지 가능
         StartCoroutine(MonsterAction());        
@@ -58,11 +57,6 @@ public class MonsterCtrl : MonoBehaviour
     {
         //이벤트의 연결정보 해지
         PlayerCtrl.OnPlayerDie -= this.YouWin;
-    }
-
-    void Display()
-    {
-        Debug.Log("Dancing");
     }
 
     void Awake()
