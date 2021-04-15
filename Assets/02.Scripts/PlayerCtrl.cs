@@ -98,14 +98,28 @@ public class PlayerCtrl : MonoBehaviour
     //     }
     // }
     //충돌 콜백 함수
+   
     void OnTriggerEnter(Collider coll)
     {
-        // if (coll.tag == "PUNCH")
-
-        if (coll.CompareTag("PUNCH"))
+        if (currHp > 0.0f && coll.CompareTag("PUNCH"))
         {
             currHp -= 10.0f;
-            Debug.Log($"Hit = {coll.gameObject.name} Hp = {currHp},{currHp/initHp}");
+            //Debug.Log($"Hit = {coll.gameObject.name} Hp = {currHp},{currHp/initHp}");
+            if (currHp <= 0.0f)
+            {
+                PlayerDie();
+            }
+        }
+    }
+
+    void PlayerDie()
+    {
+        //현재 스테이지에 생성된 모든 몬스터를 추출
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag("MONSTER");
+        //monsters 배열을 순회하면서 모든 몬스터의 YouWin함수를 호출
+        foreach (GameObject monster in monsters)
+        {
+            monster.GetComponent<MonsterCtrl>().YouWin();   
         }
     }
 }
