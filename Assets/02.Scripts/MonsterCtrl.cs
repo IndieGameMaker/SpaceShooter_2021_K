@@ -39,16 +39,27 @@ public class MonsterCtrl : MonoBehaviour
 
     private float hp = 100.0f;
 
+    //유니티 콜백 함수
+    //스크립트가 활성화 될때마다 호출
+    //생성 1, 비활성화 -> 활성화 1
     void OnEnable()
     {
+        //이벤트의 연결정보 등록
         //PlayerCtrl 클래스(스크립트)에 정의한 OnPlayerDie 이벤트가 발생(Raise)하면
         //현재 클래스(스크립트)에 있는 YouWin 함수를 호출한다.
         PlayerCtrl.OnPlayerDie += this.YouWin;
+        PlayerCtrl.OnPlayerDie += this.Display;
     }
 
     void OnDisable()
     {
+        //이벤트의 연결정보 해지
         PlayerCtrl.OnPlayerDie -= this.YouWin;
+    }
+
+    void Display()
+    {
+        Debug.Log("Dancing");
     }
 
     void Start()

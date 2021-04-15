@@ -32,9 +32,9 @@ public class PlayerCtrl : MonoBehaviour
         float GetWeaponDamage();
         void SetMonsterDamage(float damage);
     */
-    public delegate void PlayerDieHandler();
+    public delegate void DieHandler();
     // 이벤트를 선언
-    public static event PlayerDieHandler OnPlayerDie;    
+    public static event DieHandler OnPlayerDie;    
 
 
     // 델리게이트(Delegate) : 대리자, 함수를 저장할 수 있는 데이터타입
