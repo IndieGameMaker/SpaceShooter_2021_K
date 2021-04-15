@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform[] points;
+    //public Transform[] points;
+    public List<Transform> points = new List<Transform>();
     public GameObject monsterPrefab;
 
     void Start()
     {
-        points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();      
+        //List에 저장할 경우
+        GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>(points);
+
+        //배열에 저장할 경우
+        //points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();      
+        
+        
+        // Transform tr = GameObject.Find("SpawnPointGroup").transform;
+        
+        // foreach (Transform _tr in tr) //배열 또는 List
+        // {
+        //     points.Add(_tr);
+        // }
     }
 
     // Update is called once per frame
