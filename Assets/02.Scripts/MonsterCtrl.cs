@@ -142,4 +142,16 @@ public class MonsterCtrl : MonoBehaviour
     {
         Debug.Log($"Punch = {coll.gameObject.name}");
     }
+
+    //public 접근제한자로 선언한 함수는 외부 클래스(스크립트)에서 호출이 가능
+    public void YouWin()
+    {
+        //몬스터의 모든 로직을 정지
+        // StopCoroutine(CheckState());
+        // StopCoroutine(MonsterAction());
+        StopAllCoroutines();
+        agent.isStopped = true;
+
+        anim.SetTrigger("PlayerDie");
+    }
 }
