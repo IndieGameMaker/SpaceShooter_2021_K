@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+싱글턴 디자인 패턴
+Singleton Design Pattern
+*/
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance = null;
+
     //public Transform[] points;
     public List<Transform> points = new List<Transform>();
     public GameObject monsterPrefab;
@@ -12,6 +18,20 @@ public class GameManager : MonoBehaviour
     public float createTime = 3.0f;
 
     public bool isGameOver = false;
+
+    void Awake()
+    {
+        //싱글턴 초기화
+        if (instance == null) //처음 실행했을 경우
+        {
+            instance = this; //Instance ID
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else if (instance != this) //두번째 호출됐을 경우
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
@@ -24,7 +44,7 @@ public class GameManager : MonoBehaviour
         //(호출할_함수, 지연시간, 반복시간)
         //InvokeRepeating("CreateMonster", 2.0f, createTime);
         //CancelInvoke("CreateMonster");
-        
+
         StartCoroutine(CreateMonster());
     }
 
