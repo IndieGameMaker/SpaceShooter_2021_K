@@ -35,8 +35,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        CreatePool();
     }
 
     //몬스터 풀 갯수 만큼 미리 생성해서 오브젝트 풀에 저장
@@ -66,7 +64,32 @@ public class GameManager : MonoBehaviour
         //InvokeRepeating("CreateMonster", 2.0f, createTime);
         //CancelInvoke("CreateMonster");
 
-        StartCoroutine(CreateMonster());
+        CreatePool();
+
+        //StartCoroutine(CreateMonster());
+        StartCoroutine(GetMonsterInPool());
+    }
+
+    IEnumerator GetMonsterInPool()
+    {
+        while (!isGameOver)
+        {
+            yield return new WaitForSeconds(createTime);
+
+            //오브젝트 풀을 순회하면서 사용가능한 몬스터를 추출
+            foreach(var monster in monsterPool)
+            {
+                if (monster.activeSelf == false)
+                {
+                    //난수 발생
+                    int idx = Random.Range(1, points.Count);
+                    monster.transform.position = points[idx].position;
+                    monster.transform.LookAt(points[idx].position);
+                    monster.SetActive(true);
+                    break;
+                }
+            }
+        }
     }
 
     IEnumerator CreateMonster()
