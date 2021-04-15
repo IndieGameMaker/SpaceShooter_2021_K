@@ -39,6 +39,18 @@ public class MonsterCtrl : MonoBehaviour
 
     private float hp = 100.0f;
 
+    void OnEnable()
+    {
+        //PlayerCtrl 클래스(스크립트)에 정의한 OnPlayerDie 이벤트가 발생(Raise)하면
+        //현재 클래스(스크립트)에 있는 YouWin 함수를 호출한다.
+        PlayerCtrl.OnPlayerDie += this.YouWin;
+    }
+
+    void OnDisable()
+    {
+        PlayerCtrl.OnPlayerDie -= this.YouWin;
+    }
+
     void Start()
     {
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;

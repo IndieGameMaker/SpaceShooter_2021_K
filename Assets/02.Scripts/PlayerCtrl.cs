@@ -24,6 +24,22 @@ public class PlayerCtrl : MonoBehaviour
     private float initHp = 100.0f;  //초기 생명수치
     public float currHp = 100.0f;   //현재 생명수치
 
+    // 델리게이트 타입을 선언
+    /*
+        int a = 0;
+        PlayerDieHandler OnPlayerDie = void 함수명()
+        void SetPlayerHp();
+        float GetWeaponDamage();
+        void SetMonsterDamage(float damage);
+    */
+    public delegate void PlayerDieHandler();
+    // 이벤트를 선언
+    public static event PlayerDieHandler OnPlayerDie;    
+
+
+    // 델리게이트(Delegate) : 대리자, 함수를 저장할 수 있는 데이터타입
+    // 이벤트(Event) : 발생시점을 알 수 없는 함수
+
     // 시작시 1번 호출
     IEnumerator Start()
     {
@@ -107,10 +123,13 @@ public class PlayerCtrl : MonoBehaviour
             //Debug.Log($"Hit = {coll.gameObject.name} Hp = {currHp},{currHp/initHp}");
             if (currHp <= 0.0f)
             {
-                PlayerDie();
+                OnPlayerDie();
+                //PlayerDie();
             }
         }
     }
+
+
 
     void PlayerDie()
     {
