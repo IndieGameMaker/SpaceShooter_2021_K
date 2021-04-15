@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
         //List에 저장할 경우
         GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>(points);
 
+        //Resources 폴더에 있는 프리핍을 로딩
+        monsterPrefab = Resources.Load<GameObject>("monster");
+
         //배열에 저장할 경우
         //points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();      
         
