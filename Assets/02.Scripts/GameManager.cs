@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
         //배열에 저장할 경우
         //points = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();      
         
-        
         // Transform tr = GameObject.Find("SpawnPointGroup").transform;
         
         // foreach (Transform _tr in tr) //배열 또는 List
