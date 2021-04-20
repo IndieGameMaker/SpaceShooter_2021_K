@@ -26,6 +26,8 @@ public class FireCtrl : MonoBehaviour
     public new AudioSource audio;
     public AudioClip fireSfx;
 
+    private RaycastHit hit;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -53,6 +55,14 @@ public class FireCtrl : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Fire();
+            if (Physics.Raycast(firePos.position,
+                                firePos.forward,
+                                out hit,
+                                10.0f,
+                                1<<6))
+            {
+                Debug.Log($"hit = {hit.collider.name}");
+            }
         }
     }
 
@@ -60,7 +70,7 @@ public class FireCtrl : MonoBehaviour
     {
         //동적으로 프리팹을 복제하는 함수
         //Instantiate(생성할 객체, 위치값, 회전값)
-        Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        //Instantiate(bulletPrefab, firePos.position, firePos.rotation);
 
         //총소리 발생
         // audio.clip = fireSfx;

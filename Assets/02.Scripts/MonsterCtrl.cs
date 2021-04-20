@@ -155,18 +155,22 @@ public class MonsterCtrl : MonoBehaviour
     {
         if (coll.collider.CompareTag("BULLET"))
         {
-            //Hit reaction 애니메이션 실행
-            anim.SetTrigger(hashHit);
             //Bullet 삭제
             Destroy(coll.gameObject);
-
-            //몬스터의 HP 차감
-            hp -= 20.0f; //hp = hp - 20;
-            if (hp <= 0.0f)
-            {
-                state = STATE.DIE;
-            }
         }
+    }
+
+    public void OnDamage()
+    {
+        //Hit reaction 애니메이션 실행
+        anim.SetTrigger(hashHit);
+
+        //몬스터의 HP 차감
+        hp -= 20.0f; //hp = hp - 20;
+        if (hp <= 0.0f)
+        {
+            state = STATE.DIE;
+        }        
     }
 
     void OnTriggerEnter(Collider coll)
