@@ -319,6 +319,7 @@ MonoBehaviour:
   traceDist: 50
   attackDist: 2
   isDie: 0
+  bloodEffect: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
 --- !u!195 &2097907375180716717
 NavMeshAgent:
   m_ObjectHideFlags: 0

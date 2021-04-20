@@ -39,6 +39,8 @@ public class MonsterCtrl : MonoBehaviour
 
     private float hp = 100.0f;
 
+    public GameObject bloodEffect;
+
     //유니티 콜백 함수
     //스크립트가 활성화 될때마다 호출
     //생성 1, 비활성화 -> 활성화 1
@@ -160,8 +162,11 @@ public class MonsterCtrl : MonoBehaviour
         }
     }
 
-    public void OnDamage()
+    public void OnDamage(Vector3 pos, Quaternion rot)
     {
+        GameObject obj = Instantiate(bloodEffect, pos, rot);
+        Destroy(obj, 2.0f);
+
         //Hit reaction 애니메이션 실행
         anim.SetTrigger(hashHit);
 

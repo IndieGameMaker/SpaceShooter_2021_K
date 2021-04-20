@@ -62,6 +62,9 @@ public class FireCtrl : MonoBehaviour
                                 1<<6))
             {
                 Debug.Log($"hit = {hit.collider.name}");
+                Vector3 pos = hit.point; //광선의 충돌지점
+                Quaternion rot = Quaternion.LookRotation(hit.normal);
+                hit.collider.GetComponent<MonsterCtrl>().OnDamage(pos, rot);
             }
         }
     }
