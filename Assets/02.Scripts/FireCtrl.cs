@@ -7,7 +7,12 @@ using UnityEngine;
 
     AudioSource   : n
 
+    Projectile 방식
+    Raycasting 방식
+
 */
+
+
 
 [RequireComponent(typeof(AudioSource))]
 public class FireCtrl : MonoBehaviour
