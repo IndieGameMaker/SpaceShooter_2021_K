@@ -164,7 +164,7 @@ public class MonsterCtrl : MonoBehaviour
 
     public void OnDamage(Vector3 pos, Quaternion rot)
     {
-        GameObject obj = Instantiate(bloodEffect, pos, rot);
+        GameObject obj = Instantiate(bloodEffect, pos, rot, monsterTr);
         Destroy(obj, 2.0f);
 
         //Hit reaction 애니메이션 실행
