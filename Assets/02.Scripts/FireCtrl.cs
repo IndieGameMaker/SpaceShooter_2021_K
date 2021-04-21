@@ -70,7 +70,7 @@ public class FireCtrl : MonoBehaviour
     {
         //동적으로 프리팹을 복제하는 함수
         //Instantiate(생성할 객체, 위치값, 회전값)
-        //Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        Instantiate(bulletPrefab, firePos.position, firePos.rotation);
 
         //총소리 발생
         // audio.clip = fireSfx;
