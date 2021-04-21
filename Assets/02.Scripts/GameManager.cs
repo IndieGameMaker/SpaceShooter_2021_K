@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; //Unity UI 네임스페이스를 명시
+using TMPro; // TextMeshPro 네임스페이스를 명시
 
 /*
 싱글턴 디자인 패턴
@@ -23,6 +25,14 @@ public class GameManager : MonoBehaviour
     //몬스터 풀 갯수
     public int maxPool = 20;
 
+    //스코어 Text(TMP)
+    public TMP_Text scoreText;
+
+    //최고 점수
+    public int highScore = 0;
+
+#region UNITY_CALLBACK_FUNCTION
+
     void Awake()
     {
         //싱글턴 초기화
@@ -36,21 +46,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    //몬스터 풀 갯수 만큼 미리 생성해서 오브젝트 풀에 저장
-    void CreatePool()
-    {
-        for(int i=0; i<maxPool; i++)
-        {
-            GameObject monster = Instantiate<GameObject>(monsterPrefab);
-            monster.name = $"Monster_{i:000}";
-            monster.SetActive(false);
-
-            //오브젝트 풀에 추가
-            monsterPool.Add(monster);
-        }
-    }
-
 
     void Start()
     {
@@ -68,6 +63,29 @@ public class GameManager : MonoBehaviour
 
         //StartCoroutine(CreateMonster());
         StartCoroutine(GetMonsterInPool());
+    }
+
+#endregion
+
+#region USER_DEFINE_FUNCTION
+    //몬스터 풀 갯수 만큼 미리 생성해서 오브젝트 풀에 저장
+    void CreatePool()
+    {
+        for(int i=0; i<maxPool; i++)
+        {
+            GameObject monster = Instantiate<GameObject>(monsterPrefab);
+            monster.name = $"Monster_{i:000}";
+            monster.SetActive(false);
+
+            //오브젝트 풀에 추가
+            monsterPool.Add(monster);
+        }
+    }
+
+    public void DisplayScore(int score)
+    {
+        highScore += score;
+        scoreText.text = $"<color=#ff0000>SCORE : </color>{highScore}";
     }
 
     IEnumerator GetMonsterInPool()
@@ -117,4 +135,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
+#endregion
 }
