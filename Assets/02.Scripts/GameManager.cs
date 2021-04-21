@@ -49,6 +49,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // 저장된 데이터를 로드
+        highScore = PlayerPrefs.GetInt("SCORE", 0);
+        DisplayScore(0);
+
         //List에 저장할 경우
         GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>(points);
 
@@ -85,6 +89,7 @@ public class GameManager : MonoBehaviour
     public void DisplayScore(int score)
     {
         highScore += score;
+        PlayerPrefs.SetInt("SCORE", highScore);
         scoreText.text = $"<color=#ff0000>SCORE : </color>{highScore}";
     }
 

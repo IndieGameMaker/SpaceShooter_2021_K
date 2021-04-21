@@ -1033,6 +1033,8 @@ MonoBehaviour:
   isGameOver: 0
   monsterPool: []
   maxPool: 10
+  scoreText: {fileID: 962861880}
+  highScore: 0
 --- !u!4 &990429236
 Transform:
   m_ObjectHideFlags: 0
