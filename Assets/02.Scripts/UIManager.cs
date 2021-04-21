@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public void OnStartGameClick()
     {
-        SceneManager.LoadScene("Play");
+        SceneManager.LoadScene("Level01", LoadSceneMode.Single);
+        SceneManager.LoadScene("Play", LoadSceneMode.Additive);
     }
 }

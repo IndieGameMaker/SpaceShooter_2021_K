@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerCtrl : MonoBehaviour
     // currHp / initHp = 백분율(%)
     private float initHp = 100.0f;  //초기 생명수치
     public float currHp = 100.0f;   //현재 생명수치
+    public Image hpBar;
 
     // 델리게이트 타입을 선언
     /*
@@ -123,6 +125,8 @@ public class PlayerCtrl : MonoBehaviour
         if (currHp > 0.0f && coll.CompareTag("PUNCH"))
         {
             currHp -= 10.0f;
+            hpBar.fillAmount = currHp / initHp;
+            
             //Debug.Log($"Hit = {coll.gameObject.name} Hp = {currHp},{currHp/initHp}");
             if (currHp <= 0.0f)
             {
