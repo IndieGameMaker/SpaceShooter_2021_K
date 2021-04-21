@@ -16,6 +16,7 @@ public class BarrelCtrl : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         //AudioSource 컴포넌트 추출후 변수할당
         audio = GetComponent<AudioSource>();
         renderer = GetComponentInChildren<MeshRenderer>();
