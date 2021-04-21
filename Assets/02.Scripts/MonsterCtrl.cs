@@ -175,6 +175,7 @@ public class MonsterCtrl : MonoBehaviour
         if (hp <= 0.0f)
         {
             state = STATE.DIE;
+            GameManager.instance.DisplayScore(50);
         }        
     }
 
